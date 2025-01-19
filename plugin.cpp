@@ -193,7 +193,7 @@ void CastSpellFromRef(RE::StaticFunctionTag*, RE::Actor* akSource, RE::SpellItem
     ldata.parentCell = akSource->GetParentCell();
     ldata.spell = akSpell;
     ldata.castingSource = RE::MagicSystem::CastingSource::kOther;
-    ldata.unk7C = 0;                                   
+    ldata.pad7C = 0;                                   
     ldata.enchantItem = nullptr;
     ldata.poison = nullptr;
     ldata.area = eff->GetArea();
@@ -202,7 +202,7 @@ void CastSpellFromRef(RE::StaticFunctionTag*, RE::Actor* akSource, RE::SpellItem
     ldata.alwaysHit = false;
     ldata.noDamageOutsideCombat = false;
     ldata.autoAim = false;
-    ldata.unk9F = false;
+    ldata.chainShatter = false;
     ldata.useOrigin = true;
     ldata.deferInitialization = false;
     ldata.forceConeOfFire = false;
@@ -260,7 +260,7 @@ void CastSpellFromPointToPoint(RE::StaticFunctionTag*, RE::Actor* akSource, RE::
      ldata.parentCell = akSource->GetParentCell();
      ldata.spell = akSpell;
      ldata.castingSource = RE::MagicSystem::CastingSource::kOther;
-     ldata.unk7C = 0;
+     ldata.pad7C = 0;
      ldata.enchantItem = nullptr;
      ldata.poison = nullptr;
      ldata.area = eff->GetArea();
@@ -269,7 +269,7 @@ void CastSpellFromPointToPoint(RE::StaticFunctionTag*, RE::Actor* akSource, RE::
      ldata.alwaysHit = false;
      ldata.noDamageOutsideCombat = false;
      ldata.autoAim = false;
-     ldata.unk9F = false;
+     ldata.chainShatter = false;
      ldata.useOrigin = true;
      ldata.deferInitialization = false;
      ldata.forceConeOfFire = false;
@@ -392,10 +392,6 @@ void CastSpellFromPointToPoint(RE::StaticFunctionTag*, RE::Actor* akSource, RE::
 //      RE::BSPointerHandle<RE::Projectile> handle;
 //      RE::Projectile::Launch(&handle, ldata);
 //  }
-
-// This line is needed for CastSpellFromRef(), CastSpellFromHand() and CastSpellFromPointToPoint() to compile, might no longer be needed in the future? ---> This is a dtor.
-
-RE::Projectile::LaunchData::~LaunchData() {}
 
 bool PapyrusFunctions(RE::BSScript::IVirtualMachine* vm) {
     vm->RegisterFunction("GetAndrealphusExtenderVersion", "ANDR_PapyrusFunctions", GetAndrealphusExtenderVersion);
